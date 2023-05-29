@@ -14,6 +14,7 @@ System Backend
    mount
    namespace
    policy
+   password_policy
    raft
    seal
    wrapping

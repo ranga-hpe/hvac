@@ -17,6 +17,7 @@ from hvac.api.system_backend.seal import Seal
 from hvac.api.system_backend.wrapping import Wrapping
 from hvac.api.system_backend.system_backend_mixin import SystemBackendMixin
 from hvac.api.vault_api_category import VaultApiCategory
+from hvac.api.system_backend.password_policy import PasswordPolicy
 
 __all__ = (
     "Audit",
@@ -30,6 +31,7 @@ __all__ = (
     "Mount",
     "Namespace",
     "Policy",
+    "PasswordPolicy",
     "Raft",
     "Seal",
     "SystemBackend",
@@ -54,6 +56,7 @@ class SystemBackend(
     Mount,
     Namespace,
     Policy,
+    PasswordPolicy,
     Raft,
     Seal,
     Wrapping,
@@ -70,6 +73,7 @@ class SystemBackend(
         Mount,
         Namespace,
         Policy,
+        PasswordPolicy,
         Raft,
         Seal,
         Wrapping,

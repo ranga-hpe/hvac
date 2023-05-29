@@ -297,6 +297,28 @@ class Client:
 
         return policy
 
+    def get_password_policy(self, name, parse=False):
+        """Retrieve the policy body for the named password policy.
+
+        :param name: The name of the password policy to retrieve.
+        :type name: str | unicode
+        :param parse: Specifies whether to parse the password policy body using pyhcl or not.
+        :type parse: bool
+        :return: The (optionally parsed) policy body for the specified password policy.
+        :rtype: str | dict
+        """
+        try:
+            password_policy = self.sys.read_password_policy(name=name)["data"]["policy"]
+        except exceptions.InvalidPath:
+            return None
+
+        if parse:
+            if not has_hcl_parser:
+                raise ImportError("pyhcl is required for password policy parsing")
+            password_policy = hcl.loads(password_policy)
+
+        return password_policy
+
     def lookup_token(self, token=None, accessor=False, wrap_ttl=None):
         """GET /auth/token/lookup/<token>
 
